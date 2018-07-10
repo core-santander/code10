@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+// Importante importar EventEmitter del core de Anguar
 
 @Component({
   selector: 'app-jugadores',
@@ -8,10 +9,15 @@ import { Component, OnInit, Input } from '@angular/core';
 export class JugadoresComponent implements OnInit {
 
   @Input() jugadores;
+  @Output() canasta: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  setCanasta(puntos, nombre){
+    this.canasta.emit({puntos, nombre});
   }
 
 }
